@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Playlist Builder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Playlist Builder</h1>
+    <form>
+        <p>
+        <label for="song">Add a song!</label>
+        <input type="text" name="song" id="song">
+        </p>
+        <button id="addSong">Add Song</button>
+    </form>
+    <hr>    
+  <ul id="songs" class= "row">
+  </ul>
 
+  <script>
+    document.getElementById('addSong').addEventListener('click', event => {
+      event.preventDefault()
+
+      let song = document.getElementById('song').value
+      let itemElem = document.createElement('li')
+      itemElem.className = "col-sm-4"
+      itemElem.innerHTML = `
+        <span>${song}</span>
+        <button class="listenedTo">👍</button>
+        <button class="notListenedTo">👎</button>
+        <button class="delete">⛔</button>
+      `
+      document.getElementById('songs').append(itemElem)
+      document.getElementById('song').value = ''
+    })
+
+    document.addEventListener('click', event => {
+      if (event.target.className === 'delete') {
+        event.target.parentNode.remove()
+      } else if (event.target.classList.contains('listenedTo')) {
+        if (event.target.parentNode.classList.contains('notListenedTo')) {
+          event.target.parentNode.classList.remove('notListenedTo')
+          event.target.parentNode.classList.add('listenedTo')
+        } else {
+          event.target.parentNode.classList.remove('listenedTo')
+          event.target.parentNode.classList.add('notListenedTo')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

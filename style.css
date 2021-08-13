@@ -1,0 +1,17 @@
+
+    .col-sm img {
+        width: 200px;
+        height: 200px;
+      }
+    
+    .jumbotron {
+        background: #222 url(https://images.unsplash.com/photo-1490380169520-0a4b88d52565?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&s=a800618e01707bb9265bee445b736a37) center center no-repeat;
+        background-size: cover;
+      }
+    
+    .row {
+        background-color: darkslategrey;
+        text-decoration-color: floralwhite;
+        position: center;
+      }
+
